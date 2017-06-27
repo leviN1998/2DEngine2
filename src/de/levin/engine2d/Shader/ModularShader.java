@@ -1,10 +1,12 @@
 package de.levin.engine2d.Shader;
 
+
 import de.levin.engine2d.toolbox.DisplayManager;
 import de.levin.engine2d.toolbox.utils.ShaderUtils;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector4f;
 
 import java.nio.FloatBuffer;
 import java.util.HashMap;
@@ -31,8 +33,13 @@ public class ModularShader {
         ID = id;
     }
 
-    public static ModularShader createBlackShader(){
+    public static ModularShader createColorShader(){
         int id = ShaderUtils.loadShader(basicPath+"simple.vert", basicPath+"simple.frag");
+        return new ModularShader(id);
+    }
+
+    public static ModularShader createPassThrough(){
+        int id = ShaderUtils.loadShader(basicPath+"pass.vert", basicPath+"pass.frag");
         return new ModularShader(id);
     }
 
@@ -57,6 +64,15 @@ public class ModularShader {
         matrix.store(matrixBuffer);
         matrixBuffer.flip();
         GL20.glUniformMatrix4(location, false, matrixBuffer);
+    }
+
+    private void loadVector4f(int location, Vector4f vector){
+        GL20.glUniform4f(location, vector.x, vector.y, vector.z, vector.w);
+    }
+
+    public void setUniformVector4f(String name, Vector4f vector){
+        if (!enabled) enable();
+        loadVector4f(getUniform(name), vector);
     }
 
     public void setUniformMat4(String name, Matrix4f matrix){

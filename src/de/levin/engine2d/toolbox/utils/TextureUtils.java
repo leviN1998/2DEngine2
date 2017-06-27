@@ -31,10 +31,12 @@ public class TextureUtils {
         return new Vector2f(pre_x,pre_y);
     }
 
-    public static float[] calculateVertices(int width, int height){
+    public static float[] calculateVertices(int width, int height, float factor){
         float max = max(width,height);
         float w = ((float) width / 2f) / max;
         float h = ((float) height / 2f) / max;
+        w = w * factor;
+        h = h * factor;
 
         Vector2f a = new Vector2f(-w, h);
         Vector2f b = new Vector2f(-w, -h);
@@ -42,7 +44,18 @@ public class TextureUtils {
         Vector2f d = new Vector2f(w, h);
 
         return calcTriangles(a,b,c,d);
+    }
 
+    public static float[] calcOriginalSizeVetices(float width, float height){
+        float w = width / 2f;
+        float h = height / 2f;
+
+        Vector2f a = new Vector2f(-w, h);
+        Vector2f b = new Vector2f(-w, -h);
+        Vector2f c = new Vector2f(w, -h);
+        Vector2f d = new Vector2f(w, h);
+
+        return calcTriangles(a,b,c,d);
     }
 
     public static float[] calcTriangles(Vector2f a, Vector2f b, Vector2f c, Vector2f d){
