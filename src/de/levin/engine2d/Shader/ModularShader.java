@@ -22,7 +22,7 @@ public class ModularShader {
     private final int ID;
     private Map<String, Integer> locationCache = new HashMap<>();
     private static FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
-    private static String basicPath = "src/de/levin/engine2d/Shader/basic/shaders/";
+    private static String basicPath = "res/basic/shaders/";
 
     public ModularShader(String vert, String frag){
         ID = ShaderUtils.loadShader(vert,frag);
@@ -37,6 +37,8 @@ public class ModularShader {
         int id = ShaderUtils.loadShader(basicPath+"simple.vert", basicPath+"simple.frag");
         return new ModularShader(id);
     }
+
+
 
     public static ModularShader createPassThrough(){
         int id = ShaderUtils.loadShader(basicPath+"pass.vert", basicPath+"pass.frag");

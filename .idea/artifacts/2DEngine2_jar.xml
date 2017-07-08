@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="2DEngine2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/2DEngine2_jar</output-path>
+    <root id="archive" name="2DEngine2.jar">
+      <element id="module-output" name="2DEngine2" />
+      <element id="extracted-dir" path="$USER_HOME$/OneDrive/programmier stuff/slick/lib/lwjgl.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/OneDrive/programmier stuff/slick/lib/lwjgl_util.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/OneDrive/programmier stuff/slick/lib/slick.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/OneDrive/programmier stuff/slick/lib/jinput.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
